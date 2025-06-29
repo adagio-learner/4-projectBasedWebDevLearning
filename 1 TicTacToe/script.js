@@ -18,3 +18,31 @@ const winPatterns = [
     [6, 7, 8]
 ];
 
+const resetGame = () => {
+    turnO = true;
+    count = 0;
+    enableBoxes();
+    msgContainer.classList.add("hide");
+}
+
+boxes.forEach((box) => {
+    box.addEventListener("click", () => {
+        console.log("box was clicked");
+        if(turnO === true) {
+            box.innerText = "O";
+            turnO = false;
+        }else{
+            box.innerText = "X";
+            turnO = true;
+        }
+        box.disabled = true;
+        count++;
+
+        let isWinner = checkWinner();
+
+        if(count === 9 && !isWinner){
+            gameDraw();
+        }
+    });
+});
+
