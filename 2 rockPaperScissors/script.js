@@ -18,6 +18,20 @@ const drawGame = () => {
     msgParagraph.style.backgroundColor = "grey";
 }
 
+const showWinner = (userWin, userChoice, compChoice) => {
+    if(userWin){
+        userScore++;
+        userChoicePara.innerText = userScore;
+        msgParagraph.innerText = `You win! your ${userChoice} beats ${compChoice}`;
+        msgParagraph.style.backgroundColor = "green";
+    } else {
+        compScore++;
+        compChoicePara.innerText = compScore;
+        msgParagraph.innerText = `You lose! ${compChoice} beats your ${userChoice}`;
+        msgParagraph.style.backgroundColor = "red";
+    }
+}
+
 const playGame = (userChoice) => {
     // Generate Computer Choice
     const compChoice = genCompChoice();
